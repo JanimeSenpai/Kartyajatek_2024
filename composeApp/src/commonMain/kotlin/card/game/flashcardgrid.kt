@@ -14,24 +14,24 @@ fun FlashcardGrid(flashcards: List<Flashcard>, onCardClicked: (Int) -> Unit) {
         modifier = Modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-      /*  val chunkedFlashcards = flashcards.chunked(2)// ha egymás mellé szeretnénk őket rakni
+        val chunkedFlashcards = flashcards.chunked(2)// ha egymás mellé szeretnénk őket rakni
         chunkedFlashcards.forEach { rowFlashcards ->
             Row(
                 modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceAround
+                horizontalArrangement = Arrangement.Center
             ) {
                 rowFlashcards.forEach { flashcard ->
                     FlashcardItem(flashcard = flashcard, onClick = { onCardClicked(flashcard.id) })
                 }
             }
-        }*/
+        }
 
 
-        Column {
+      /*  Column { //sima oszlop
             flashcards.forEach { flashcard ->
                 FlashcardItem(flashcard = flashcard, onClick = { onCardClicked(flashcard.id) })
             }
-        }
+        }*/
 
 
 

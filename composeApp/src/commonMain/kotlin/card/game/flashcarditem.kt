@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -36,7 +37,7 @@ fun FlashcardItem(flashcard: Flashcard, onClick: () -> Unit) {
         modifier = Modifier
             .padding(8.dp)
             .height(120.dp)
-            .fillMaxWidth(.2f)
+            .widthIn(200.dp, 400.dp)
             .graphicsLayer {
                 rotationY = rotation
                 cameraDistance = 12 * density
