@@ -62,7 +62,56 @@ class FlashcardViewModel : ViewModel() {
 
     private fun getHungarianContentForCard(index: Int): List<String> {
         val languageArraysHun = listOf(
-            /*érzés*/        listOf("alma", "körte", "narancs", "barack", "citrom", "ananász"),
+            /*érzés*/        listOf(
+                "Meglepődés Riadt Döbbent",
+                "Meglepődés Riadt Megrémült",
+                "Meglepődés Zavarodott Kiábrándult",
+                "Meglepődés Zavarodott Meghökkent",
+                "Meglepődés Megdöbbent Elképedt",
+                "Meglepődés Megdöbbent Félelemmel vegyes bámulatba ejtett",
+                "Meglepődés Izgatott Buzgó",
+                "Meglepődés Izgatott Energikus",
+                "Boldogság Érdeklődő Kíváncsi",
+                "Boldogság Érdeklődő Derűs",
+                "Boldogság Büszke Fontos",
+                "Boldogság Büszke Magabiztos",
+                "Boldogság Békés Szeretetteljes",
+                "Boldogság Békés Reményteli",
+                "Boldogság Optimista Nyitott",
+                "Boldogság Optimista Inspirált",
+                "Szomorúság Unott Érdektelen",
+                "Szomorúság Unott Közönyös",
+                "Szomorúság Lehangolt Kiüresedett",
+                "Szomorúság Lehangolt Alsóbbrendű",
+                "Szomorúság Elhagyatott Bántalmazott",
+                "Szomorúság Elhagyatott Mellőzött",
+                "Szomorúság Bűnös Megszégyenült",
+                "Szomorúság Bűnös Bűnbánó",
+                "Undor Elkerülő Határozatlan",
+                "Undor Elkerülő Idegenkedés",
+                "Undor Irtózatos Utálatos",
+                "Undor Irtózatos Ellenérzés",
+                "Undor Csalódott Fellázadt",
+                "Undor Csalódott Visszataszító",
+                "Undor Helytelenítő Megvető",
+                "Undor Helytelenítő Ítélkező",
+                "Harag Távolságtartó Gyanakvó",
+                "Harag Távolságtartó Zárkózott",
+                "Harag Frusztrált Ingerlékeny",
+                "Harag Frusztrált Feldühödött",
+                "Harag Agresszív Ellenséges",
+                "Harag Agresszív Provokált",
+                "Harag Sértett Letört",
+                "Harag Sértett Zavart",
+                "Félelem Visszautasított Elidegenedett",
+                "Félelem Visszautasított Alkalmatlan",
+                "Félelem Engedelmes Jelentéktelen",
+                "Félelem Engedelmes Értéktelen",
+                "Félelem Bizonytalan Alsóbbrendű",
+                "Félelem Bizonytalan Alkalmatlan",
+                "Félelem Szorongó Aggódó",
+                "Félelem Szorongó Túlterhelt"
+            ),
             /*tabu*/ listOf(
                 "Szexuális orientáltság",
                 "Erőszak",
@@ -153,10 +202,23 @@ class FlashcardViewModel : ViewModel() {
                 "Edzők",
                 "Édesapa",
                 "Édesanya",
-                "Főnök"
+                "Főnök",
+                "Barátok",          // New element
+                "Kollégák",         // New element
+                "Szomszédok",       // New element
+                "Unokatestvérek",   // New element
+                "Gyerekek",         // New element
+                "Osztálytársak",    // New element
+                "Mentorok",         // New element
+                "Pszichológus",     // New element
+                "Orvosok",          // New element
+                "Üzleti partnerek", // New element
+                "Lakótársak",       // New element
+                "Rokonok"           // New element
             ),
             /*helyszín*/
-          listOf("Szülőváros",
+            listOf(
+                "Szülőváros",
                 "Lakóhely",
                 "Óvoda",
                 "Általános iskola",
@@ -164,7 +226,20 @@ class FlashcardViewModel : ViewModel() {
                 "Egyetem",
                 "Edzőtábor",
                 "Nyaralás",
-                "Külföld"
+                "Külföld",
+                "Múzeum",          // New element
+                "Könyvtár",        // New element
+                "Színház",         // New element
+                "Mozi",            // New element
+                "Park",            // New element
+                "Bevásárlóközpont",// New element
+                "Kávézó",          // New element
+                "Étterem",         // New element
+                "Kórház",          // New element
+                "Repülőtér",       // New element
+                "Vasútállomás",    // New element
+                "Tengerpart",      // New element
+                "Hegyek"           // New element
             ),
             /*életkör*/ listOf(
                   "Egyetem, munka, karrier",
