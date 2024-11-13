@@ -37,7 +37,8 @@ fun FlashcardItem(flashcard: Flashcard, onClick: () -> Unit) {
         modifier = Modifier
             .padding(8.dp)
             .height(120.dp)
-            .widthIn(200.dp, 400.dp)
+            .fillMaxWidth(0.9f)
+            //.widthIn(200.dp, 400.dp)
             .graphicsLayer {
                 rotationY = rotation
                 cameraDistance = 12 * density
