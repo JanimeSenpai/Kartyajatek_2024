@@ -1,9 +1,12 @@
 package card.game
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
@@ -29,9 +32,12 @@ fun FlashcardGrid(flashcards: List<Flashcard>, onCardClicked: (Int) -> Unit) {
         }*/
 
         val scrollState  = rememberScrollState()
-        Column(Modifier.verticalScroll(scrollState)) { //sima oszlop
+        Column(Modifier.fillMaxHeight()) { //sima oszlop
             flashcards.forEach { flashcard ->
-                FlashcardItem(flashcard = flashcard, onClick = { onCardClicked(flashcard.id) })
+                Box(Modifier.weight(1f).fillMaxWidth(),contentAlignment = Alignment.Center){
+                    FlashcardItem(flashcard = flashcard, onClick = { onCardClicked(flashcard.id) })
+                }
+
             }
         }
 

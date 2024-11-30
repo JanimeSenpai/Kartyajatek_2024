@@ -2,10 +2,10 @@ package card.game
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
-import androidx.compose.material.DropdownMenu
-import androidx.compose.material.DropdownMenuItem
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
@@ -34,19 +34,19 @@ fun MenuButton(onMenuItemSelected: (GameMode) -> Unit) {
             DropdownMenuItem(onClick = {
                 expanded = false
                 onMenuItemSelected(GameMode.Info)
-            }, content = { Text("Info") })
+            }, text = { Text("Info") })
             DropdownMenuItem(onClick = {
                 expanded = false
                 onMenuItemSelected(GameMode.Game1)
-            }, content = { Text("Game1") })
+            }, text = { Text("Game1") })
             DropdownMenuItem(onClick = {
                 expanded = false
                 onMenuItemSelected(GameMode.Game2)
-            }, content = { Text("Game2") })
+            }, text = { Text("Game2") })
             DropdownMenuItem(onClick = {
                 expanded = false
                 onMenuItemSelected(GameMode.Game3)
-            }, content = { Text("Game3") })
+            }, text = { Text("Game3") })
         }
     }
 }

@@ -5,17 +5,20 @@ import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Text
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -36,7 +39,7 @@ fun FlashcardItem(flashcard: Flashcard, onClick: () -> Unit) {
     Box(
         modifier = Modifier
             .padding(8.dp)
-            .height(120.dp)
+            .fillMaxHeight(0.9f)
             .fillMaxWidth(0.9f)
             //.widthIn(200.dp, 400.dp)
             .graphicsLayer {
@@ -54,7 +57,8 @@ fun FlashcardItem(flashcard: Flashcard, onClick: () -> Unit) {
             modifier = Modifier.padding(16.dp).graphicsLayer {
                 rotationY = textrotation
                 cameraDistance = 12 * density
-            }
+            },
+            color = Color.Black
         )
     }
 }
