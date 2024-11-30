@@ -16,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun MainScreen() {
+fun MainScreen(orientation:String) {
     val viewModel: FlashcardViewModel = remember {FlashcardViewModel()}
     val uiState by viewModel.uiState.collectAsState()
 Surface(
@@ -46,7 +46,7 @@ Surface(
         // Display content based on the current game mode
         when (uiState.currentGame) {
 //            GameMode.Info -> InfoScreen()
-            GameMode.Game1 -> FlashcardGrid(flashcards = uiState.flashcards, onCardClicked = { viewModel.flipCard(it) })
+            GameMode.Game1 -> FlashcardGrid(flashcards = uiState.flashcards, onCardClicked = { viewModel.flipCard(it) },orientation)
            /// GameMode.Game2 -> SingleFlashcard(/* Pass appropriate data */)
            // GameMode.Game3 -> SingleFlashcard(/* Pass appropriate data */)
             GameMode.Info -> TODO()

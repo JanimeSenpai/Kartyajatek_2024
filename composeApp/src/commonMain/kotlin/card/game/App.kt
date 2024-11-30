@@ -16,8 +16,8 @@ import kartyajatek_2024.composeapp.generated.resources.compose_multiplatform
 
 @Composable
 @Preview
-fun App() {
+fun App(orientation:String) {
     KartyaJatekTheme {
-            MainScreen()
+            MainScreen(orientation)
     }
 }

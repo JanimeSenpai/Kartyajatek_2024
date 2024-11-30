@@ -111,7 +111,7 @@ class FlashcardViewModel : ViewModel() {
                 "Félelem Bizonytalan Alkalmatlan",
                 "Félelem Szorongó Aggódó",
                 "Félelem Szorongó Túlterhelt"
-            ),
+            ).map { it.replace(" ", ">>") },
             /*tabu*/ listOf(
                 "Szexuális orientáltság",
                 "Erőszak",
