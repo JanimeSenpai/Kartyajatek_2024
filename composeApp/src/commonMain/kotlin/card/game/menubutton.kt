@@ -42,7 +42,7 @@ fun MenuButton(onMenuItemSelected: (GameMode) -> Unit) {
             DropdownMenuItem(onClick = {
                 expanded = false
                 onMenuItemSelected(GameMode.Game2)
-            }, text = { Text("Game2") })
+            }, text = { Text("Bekérdező kártyák") })//translations
             DropdownMenuItem(onClick = {
                 expanded = false
                 onMenuItemSelected(GameMode.Game3)
