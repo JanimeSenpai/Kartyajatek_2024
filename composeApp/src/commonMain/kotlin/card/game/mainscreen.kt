@@ -14,6 +14,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import card.game.bekerdezokerdesek.QuestionsPage
 
 @Composable
 fun MainScreen(orientation:String) {
@@ -35,6 +36,8 @@ Surface(
         // Menu Button and Dropdown
         MenuButton(onMenuItemSelected = { viewModel.selectGame(it) })
 
+        Spacer(modifier = Modifier.height(10.dp))
+
         // Language Toggle
         LanguageToggle(
             lang = uiState.lang,
@@ -49,9 +52,13 @@ Surface(
             GameMode.Game1 -> FlashcardGrid(flashcards = uiState.flashcards, onCardClicked = { viewModel.flipCard(it) },orientation)
            /// GameMode.Game2 -> SingleFlashcard(/* Pass appropriate data */)
            // GameMode.Game3 -> SingleFlashcard(/* Pass appropriate data */)
-            GameMode.Info -> TODO()
-            GameMode.Game2 -> TODO()
-            GameMode.Game3 -> TODO()
+            GameMode.Info -> {
+                //valami információt ha ki akarnánk írni esetle
+            }
+            GameMode.Game2 -> QuestionsPage()
+            GameMode.Game3 -> {
+                //van még harmadik gamemode?
+            }
         }
     }
 }
