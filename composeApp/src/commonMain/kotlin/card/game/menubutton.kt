@@ -7,6 +7,7 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -14,6 +15,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.sp
 
 @Composable
@@ -43,10 +45,13 @@ fun MenuButton(onMenuItemSelected: (GameMode) -> Unit) {
                 expanded = false
                 onMenuItemSelected(GameMode.Game2)
             }, text = { Text("Bekérdező kártyák") })//translations
-            DropdownMenuItem(onClick = {
+           /* DropdownMenuItem(onClick = {
                 expanded = false
                 onMenuItemSelected(GameMode.Game3)
-            }, text = { Text("Game3") })
+            }, text = { Text("Game3") })*/
         }
     }
 }
+
+
+

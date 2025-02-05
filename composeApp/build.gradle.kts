@@ -98,6 +98,8 @@ android {
 
 dependencies {
     implementation(libs.androidx.material3.android)
+    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.androidx.navigation.runtime.android)
     debugImplementation(compose.uiTooling)
 }
 

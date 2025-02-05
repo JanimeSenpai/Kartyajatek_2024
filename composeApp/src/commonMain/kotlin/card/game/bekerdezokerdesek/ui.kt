@@ -34,6 +34,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import card.game.getPlatform
 import kartyajatek_2024.composeapp.generated.resources.Res
@@ -83,53 +84,57 @@ fun QuestionsPage(
                 }
             }
         },
+        containerColor =    MaterialTheme.colorScheme.primaryContainer
+        ,
         floatingActionButtonPosition = FabPosition.Center, // Position the FAB at the center bottom
         content = { paddingValues ->
             Column(
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(paddingValues)
-                    .padding(horizontal = 16.dp, vertical = 32.dp),
+                    .fillMaxSize(),
+                  //  .padding(paddingValues)
+                   // .padding(horizontal = 16.dp, vertical = 32.dp),
+
                 verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                QuestionControls(
-                    onBackClick = { viewModel.onBackClick() },
-                    onNextClick = { viewModel.onNextClick(isRandom, isLoopEnabled) },
-                    currentQuestion = currentQuestion,
-                    isEndOfList = isEndOfList
-                )
+
 
                 Box(
-                    modifier = Modifier.fillMaxSize(),
-                    contentAlignment = Alignment.Center
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(16.dp)
                 ) {
-                    Surface(
-                        color = MaterialTheme.colorScheme.primaryContainer,
-                        shape = Shapes().large,
-                        modifier = Modifier
-                            .animateContentSize()
-                            .wrapContentSize()
+                    Column(
+                        modifier = Modifier.fillMaxSize(),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.SpaceBetween // A gyermekek közötti helyek elosztása
                     ) {
-                        Column(
-                            Modifier
-                                .padding(16.dp)
-                                .verticalScroll(rememberScrollState()),
-                            verticalArrangement = Arrangement.Center,
-                            horizontalAlignment = Alignment.CenterHorizontally
+                        // A felső rész kitölt egy üres területet, de a tartalom a közepén lesz elhelyezve
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .weight(1f), // Ez a Box a maradék teret kitölti
+                            contentAlignment = Alignment.Center // A tartalom itt középre kerül
                         ) {
-                            Text(text = "Bekérdező kérdések", style = MaterialTheme.typography.headlineSmall)
-                            Spacer(modifier = Modifier.height(16.dp))
                             Text(
                                 text = if (isEndOfList) {
                                     stringResource(Res.string.endoflist)
                                 } else currentQuestion,
                                 style = MaterialTheme.typography.headlineLarge
                             )
-                            Spacer(modifier = Modifier.height(16.dp))
                         }
+
+                        // Az alsó rész a QuestionControls komponenst tartalmazza, amely így a képernyő alján helyezkedik el
+                        QuestionControls(
+                            onBackClick = { viewModel.onBackClick() },
+                            onNextClick = { viewModel.onNextClick(isRandom, isLoopEnabled) },
+                            currentQuestion = currentQuestion,
+                            isEndOfList = isEndOfList
+                        )
                     }
                 }
+
+
             }
         }
     )

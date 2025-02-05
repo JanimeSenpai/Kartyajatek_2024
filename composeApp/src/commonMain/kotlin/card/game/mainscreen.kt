@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -16,51 +17,59 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import card.game.bekerdezokerdesek.QuestionsPage
 
+// Main Screen that holds the main content and bottom navigation bar
 @Composable
-fun MainScreen(orientation:String) {
-    val viewModel: FlashcardViewModel = remember {FlashcardViewModel()}
+fun MainScreen(orientation: String) {
+    // Instead of using dependency injection, we simply create the ViewModel here as a sample.
+    val viewModel: FlashcardViewModel = remember { FlashcardViewModel() }
     val uiState by viewModel.uiState.collectAsState()
-Surface(
-    modifier = Modifier.fillMaxSize(),
-    color = MaterialTheme.colorScheme.background
-){
+
+    // Use Scaffold to add a bottomBar.
+    Scaffold(
+        bottomBar = {
+            MyBottomNavigationBar(
+                currentGame = uiState.currentGame,
+                onGameSelected = { gameMode -> viewModel.selectGame(gameMode) }
+            )
+        }
+    ) { innerPadding ->
+        Surface(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(innerPadding),
+            color = MaterialTheme.colorScheme.background
+        ) {
+            Column(
+                modifier = Modifier
+                    .fillMaxSize(),
+                  //  .padding(6.dp),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+              //  Spacer(modifier = Modifier.height(10.dp))
+                // Language Toggle remains at the top
 
 
+              /*  LanguageToggle(
+                    lang = uiState.lang,
+                    onToggleLanguage = { viewModel.toggleLanguage() }
+                )*/
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(6.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        // Menu Button and Dropdown
-        MenuButton(onMenuItemSelected = { viewModel.selectGame(it) })
 
-        Spacer(modifier = Modifier.height(10.dp))
+               // Spacer(modifier = Modifier.height(10.dp))
 
-        // Language Toggle
-        LanguageToggle(
-            lang = uiState.lang,
-            onToggleLanguage = { viewModel.toggleLanguage() }
-        )
-
-        Spacer(modifier = Modifier.height(10.dp))
-
-        // Display content based on the current game mode
-        when (uiState.currentGame) {
-//            GameMode.Info -> InfoScreen()
-            GameMode.Game1 -> FlashcardGrid(flashcards = uiState.flashcards, onCardClicked = { viewModel.flipCard(it) },orientation)
-           /// GameMode.Game2 -> SingleFlashcard(/* Pass appropriate data */)
-           // GameMode.Game3 -> SingleFlashcard(/* Pass appropriate data */)
-            GameMode.Info -> {
-                //valami információt ha ki akarnánk írni esetle
-            }
-            GameMode.Game2 -> QuestionsPage()
-            GameMode.Game3 -> {
-                //van még harmadik gamemode?
+                // Display content based on the selected game mode.
+                when (uiState.currentGame) {
+                    GameMode.Game1 -> FlashcardGrid(
+                        flashcards = uiState.flashcards,
+                        onCardClicked = { viewModel.flipCard(it) },
+                        orientation = orientation
+                    )
+                    GameMode.Info -> {
+                        // Display an informational screen content, such as InfoScreen()
+                    }
+                    GameMode.Game2 -> QuestionsPage()
+                }
             }
         }
     }
-}
-
 }

@@ -22,5 +22,4 @@ enum class GameMode {
     Info,
     Game1,
     Game2,
-    Game3
 }

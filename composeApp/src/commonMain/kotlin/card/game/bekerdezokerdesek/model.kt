@@ -115,7 +115,7 @@ class QuestionsViewModel(
         resetForLooping(preserveLastQuestion = false)
     }
     fun resetForLooping(preserveLastQuestion: Boolean) {
-        _remainingQuestions.value = questions.toMutableList()
+        _remainingQuestions.value = questions.shuffled().toMutableList()
         if(!preserveLastQuestion) _askedQuestions.value.clear()
         _endOfQuestionList.value = false
     }
