@@ -11,7 +11,9 @@ import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -23,21 +25,24 @@ fun MainScreen(orientation: String) {
     // Instead of using dependency injection, we simply create the ViewModel here as a sample.
     val viewModel: FlashcardViewModel = remember { FlashcardViewModel() }
     val uiState by viewModel.uiState.collectAsState()
-
-    // Use Scaffold to add a bottomBar.
+    val color = when (uiState.currentGame) {
+        GameMode.Game2 -> MaterialTheme.colorScheme.primaryContainer
+        GameMode.Info, GameMode.Game1 -> MaterialTheme.colorScheme.background
+    }    // Use Scaffold to add a bottomBar.
     Scaffold(
         bottomBar = {
             MyBottomNavigationBar(
                 currentGame = uiState.currentGame,
                 onGameSelected = { gameMode -> viewModel.selectGame(gameMode) }
             )
-        }
-    ) { innerPadding ->
+        },
+        containerColor = color,
+    ) {
+        innerPadding ->
         Surface(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding),
-            color = MaterialTheme.colorScheme.background
         ) {
             Column(
                 modifier = Modifier
@@ -59,15 +64,19 @@ fun MainScreen(orientation: String) {
 
                 // Display content based on the selected game mode.
                 when (uiState.currentGame) {
-                    GameMode.Game1 -> FlashcardGrid(
-                        flashcards = uiState.flashcards,
-                        onCardClicked = { viewModel.flipCard(it) },
-                        orientation = orientation
-                    )
+                    GameMode.Game1 -> {
+                        FlashcardGrid(
+                            flashcards = uiState.flashcards,
+                            onCardClicked = { viewModel.flipCard(it) },
+                            orientation = orientation
+                        )
+                    }
                     GameMode.Info -> {
                         // Display an informational screen content, such as InfoScreen()
                     }
-                    GameMode.Game2 -> QuestionsPage()
+                    GameMode.Game2 -> {
+                        QuestionsPage()
+                    }
                 }
             }
         }
