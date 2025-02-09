@@ -36,6 +36,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import card.game.getPlatform
 import kartyajatek_2024.composeapp.generated.resources.Res
 import kartyajatek_2024.composeapp.generated.resources.endoflist
@@ -56,7 +57,7 @@ fun QuestionsPage(
 
     val currentQuestion by viewModel.currentQuestion.collectAsState()
     val isEndOfList by viewModel.endOfQuestionList.collectAsState()
-    val bgColor by viewModel.bgColor.collectAsState()
+    val Colors by viewModel.Colors.collectAsState()
 
     LaunchedEffect(audience, restartTrigger) {
         questions.value = getQuestionsForAudience(audienceID)
@@ -86,7 +87,7 @@ fun QuestionsPage(
                 }
             }
         },
-        containerColor = bgColor  // MaterialTheme.colorScheme.primaryContainer
+        containerColor = Colors.first  // MaterialTheme.colorScheme.primaryContainer
         ,
         floatingActionButtonPosition = FabPosition.Center, // Position the FAB at the center bottom
         content = { paddingValues ->
@@ -122,7 +123,10 @@ fun QuestionsPage(
                                 text = if (isEndOfList) {
                                     stringResource(Res.string.endoflist)
                                 } else currentQuestion,
-                                style = MaterialTheme.typography.headlineLarge
+                                style = MaterialTheme.typography.headlineLarge,
+                                fontSize = 40.sp,
+                                lineHeight = 44.sp,
+                                color = Colors.second
                             )
                         }
 

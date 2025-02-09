@@ -22,18 +22,18 @@ class QuestionsViewModel(
     private val _endOfQuestionList = MutableStateFlow(false)
     val endOfQuestionList: StateFlow<Boolean> = _endOfQuestionList.asStateFlow()
 
-    private val _bgColor = MutableStateFlow( Color(0xFFFFFFFF))
-    val bgColor: StateFlow<Color> = _bgColor.asStateFlow()
+    private val _Colors = MutableStateFlow(  Pair( Color(0xFFFFFFFF), Color.Black))
+    val Colors: StateFlow<Pair<Color, Color>> = _Colors.asStateFlow()
 
     val cardcolors = listOf(
-      Color(0xFFFFFFFF),
-        Color(0xFF000000),
-        Color(0xFF6EE679),
-        Color(0xFFFFD11D),
-        Color(0xFF5F4BB6),
-        Color(0xFFFF6978),
-        Color(0xFF6E8898),
-        Color(0xFF266DD3),
+     Pair( Color(0xFFFFFFFF), Color.Black),
+      Pair(   Color(0xFF000000), Color.White),
+        Pair( Color(0xFF6EE679),Color.Black),
+       Pair(  Color(0xFFFFD11D),Color.Black),
+      Pair(   Color(0xFF5F4BB6),Color.White),
+      Pair(   Color(0xFFFF6978),Color.Black),
+      Pair(   Color(0xFF6E8898),Color.Black),
+      Pair(   Color(0xFF266DD3),Color.White)
     )
 
 
@@ -74,7 +74,7 @@ class QuestionsViewModel(
 
             // Update the current question
             _currentQuestion.value = nextQuestion
-            _bgColor.value=cardcolors.random()
+            _Colors.value=cardcolors.random()
 
 
         } else {
