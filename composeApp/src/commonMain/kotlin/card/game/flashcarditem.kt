@@ -25,7 +25,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun FlashcardItem(flashcard: Flashcard, onClick: () -> Unit,width:Float=0.9f,) {
+fun FlashcardItem(flashcard: Flashcard, onClick: () -> Unit,width:Float=0.95f,) {
     val rotation by animateFloatAsState(
         targetValue = if (flashcard.isFlipped) 180f else 0f,
         animationSpec = tween(durationMillis = 500)
