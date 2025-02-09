@@ -27,8 +27,9 @@ class MainActivity : ComponentActivity() {
             }else{
                 orientation = "portrait"
             }
-
-            App(orientation)
+            KartyaJatekAndroidTheme{
+                App(orientation)
+            }
         }
     }
 }

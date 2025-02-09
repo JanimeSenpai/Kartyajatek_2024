@@ -38,15 +38,15 @@ fun FlashcardItem(flashcard: Flashcard, onClick: () -> Unit,width:Float=0.9f,) {
 
     Box(
         modifier = Modifier
-            .padding(8.dp)
-            .fillMaxHeight(0.9f)
+            .padding(4.dp)
+            .fillMaxHeight(0.96f)
             .fillMaxWidth(width)
             //.widthIn(200.dp, 400.dp)
             .graphicsLayer {
                 rotationY = rotation
                 cameraDistance = 12 * density
             }
-            .background(flashcard.backgroundColor, shape = RoundedCornerShape(40.dp))
+            .background(flashcard.backgroundColor, shape = RoundedCornerShape(20.dp))
             .clickable { onClick() },
         contentAlignment = Alignment.Center
     ) {

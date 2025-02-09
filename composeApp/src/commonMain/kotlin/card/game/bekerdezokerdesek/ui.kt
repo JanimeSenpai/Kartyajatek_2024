@@ -56,6 +56,8 @@ fun QuestionsPage(
 
     val currentQuestion by viewModel.currentQuestion.collectAsState()
     val isEndOfList by viewModel.endOfQuestionList.collectAsState()
+    val bgColor by viewModel.bgColor.collectAsState()
+
     LaunchedEffect(audience, restartTrigger) {
         questions.value = getQuestionsForAudience(audienceID)
         viewModel.importQuestions(questions.value)
@@ -84,7 +86,7 @@ fun QuestionsPage(
                 }
             }
         },
-        containerColor =    MaterialTheme.colorScheme.primaryContainer
+        containerColor = bgColor  // MaterialTheme.colorScheme.primaryContainer
         ,
         floatingActionButtonPosition = FabPosition.Center, // Position the FAB at the center bottom
         content = { paddingValues ->

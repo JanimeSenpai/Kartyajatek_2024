@@ -100,6 +100,7 @@ dependencies {
     implementation(libs.androidx.material3.android)
     implementation(libs.androidx.navigation.runtime.ktx)
     implementation(libs.androidx.navigation.runtime.android)
+   // implementation("androidx.compose.ui:ui-text-google-fonts:1.7.7")
     debugImplementation(compose.uiTooling)
 }
 

@@ -1,5 +1,6 @@
 package card.game.bekerdezokerdesek
 
+import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -21,7 +22,19 @@ class QuestionsViewModel(
     private val _endOfQuestionList = MutableStateFlow(false)
     val endOfQuestionList: StateFlow<Boolean> = _endOfQuestionList.asStateFlow()
 
+    private val _bgColor = MutableStateFlow( Color(0xFFFFFFFF))
+    val bgColor: StateFlow<Color> = _bgColor.asStateFlow()
 
+    val cardcolors = listOf(
+      Color(0xFFFFFFFF),
+        Color(0xFF000000),
+        Color(0xFF6EE679),
+        Color(0xFFFFD11D),
+        Color(0xFF5F4BB6),
+        Color(0xFFFF6978),
+        Color(0xFF6E8898),
+        Color(0xFF266DD3),
+    )
 
 
 
@@ -31,12 +44,9 @@ class QuestionsViewModel(
             _remainingQuestions.value = _remainingQuestions.value.toMutableList().apply {
                 add(0, _currentQuestion.value)
             }
-
             // Get the last asked question and set it as the current question
             val lastAskedQuestion = _askedQuestions.value.removeLast()
             _currentQuestion.value = lastAskedQuestion
-
-
         }
 
     }
@@ -64,6 +74,7 @@ class QuestionsViewModel(
 
             // Update the current question
             _currentQuestion.value = nextQuestion
+            _bgColor.value=cardcolors.random()
 
 
         } else {

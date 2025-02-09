@@ -3,21 +3,27 @@ package card.game
 import androidx.compose.foundation.isSystemInDarkTheme
 
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.SideEffect
 import androidx.compose.material3.*
 
 
-val colorscheme = darkColorScheme()
+val commoncolorscheme = darkColorScheme()
+
+
+
+
+//val typography = MaterialTheme.typography.copy()
+
 
 @Composable
-fun KartyaJatekTheme(
+fun KartyaJatekCommonTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     content: @Composable () -> Unit
 ) {
 
     MaterialTheme(
-        colorScheme = colorscheme,
-        content = content
+        colorScheme = commoncolorscheme,
+        content = content,
+      //  typography =
     )
 
 }

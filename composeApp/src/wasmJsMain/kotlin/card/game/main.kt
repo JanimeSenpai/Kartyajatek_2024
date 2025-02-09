@@ -20,6 +20,7 @@ fun main() {
         val widthDp = with(density) { windowWidthPx.toDp() }
         val w = remember { mutableStateOf(widthDp) }
         BoxWithConstraints {
+            KartyaJatekCommonTheme {
             App(orientation = orientation.value)
             w.value = maxWidth
             val h = remember { mutableStateOf(maxHeight) }
@@ -32,5 +33,6 @@ fun main() {
             }
             //   println("orientation (box)= ${orientation.value}")
         }
+    }
     }
 }
