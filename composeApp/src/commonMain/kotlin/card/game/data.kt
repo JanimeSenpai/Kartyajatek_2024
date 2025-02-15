@@ -1,6 +1,7 @@
 package card.game
 
 import androidx.compose.ui.graphics.Color
+import org.jetbrains.compose.resources.DrawableResource
 
 data class Flashcard(
     val id: Int,
@@ -9,7 +10,8 @@ data class Flashcard(
     val contentEng: List<String>,
     val isFlipped: Boolean = false,
     val displayedText: String = "",
-    val backgroundColor: Color
+    val backgroundColor: Color,
+    val imageResource: DrawableResource
 )
 
 data class UIState(

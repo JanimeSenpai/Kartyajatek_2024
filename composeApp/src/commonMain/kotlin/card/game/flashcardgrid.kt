@@ -6,12 +6,11 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.wrapContentWidth
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import kartyajatek_2024.composeapp.generated.resources.Res
+import kartyajatek_2024.composeapp.generated.resources.compose_multiplatform
 
 @Composable
 fun FlashcardGrid(flashcards: List<Flashcard>, onCardClicked: (Int) -> Unit,orientation:String) {
@@ -32,7 +31,9 @@ fun FlashcardGrid(flashcards: List<Flashcard>, onCardClicked: (Int) -> Unit,orie
                          Box(Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
                              FlashcardItem(
                                  flashcard = flashcard,
-                                 onClick = { onCardClicked(flashcard.id) })
+                                 onClick = { onCardClicked(flashcard.id) },
+                                imageDrawable =  Res.drawable.compose_multiplatform
+                             )
                          }
                      }
                  }
@@ -45,7 +46,9 @@ fun FlashcardGrid(flashcards: List<Flashcard>, onCardClicked: (Int) -> Unit,orie
                     Box(Modifier.weight(1f).fillMaxWidth(), contentAlignment = Alignment.Center) {
                         FlashcardItem(
                             flashcard = flashcard,
-                            onClick = { onCardClicked(flashcard.id) })
+                            onClick = { onCardClicked(flashcard.id) },
+                            imageDrawable =  flashcard.imageResource
+                        )
                     }
 
                 }

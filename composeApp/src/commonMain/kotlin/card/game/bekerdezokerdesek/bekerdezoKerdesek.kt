@@ -42,7 +42,7 @@ val kerdesek = "Miért nincs belső kisugárzásod?\n" +
         "Miért szar magányosnak lenni?\n" +
         "Miért nem vagy hiteles?\n" +
         "Miért nem sugárzol belülről erőt? Mi hiányzik ehhez?\n" +
-        "KInek akarsz megfelelni és kinek akarsz bizonyítani, bizonygatni?\n" +
+        "Kinek akarsz megfelelni és kinek akarsz bizonyítani, bizonygatni?\n" +
         "Mikor voltál életedben a legboldogabb?\n" +
         "Ha nem számítana semmi, milyen életet élnél ? Hol élnél Mit dolgoznál? stb.\n" +
         "Miben akarsz a legjobb lenni ? Miből akarnál világhírű lenni?\n" +

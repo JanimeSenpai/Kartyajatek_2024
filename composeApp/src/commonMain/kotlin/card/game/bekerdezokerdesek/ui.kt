@@ -2,6 +2,8 @@ package card.game.bekerdezokerdesek
 
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateContentSize
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -28,6 +30,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -45,7 +48,7 @@ import org.jetbrains.compose.resources.stringResource
 
 @Composable
 fun QuestionsPage(
-    audience: String="null",audienceID: Int=0, isRandom: Boolean=false, isLoopEnabled: Boolean=false,
+    audience: String="null",audienceID: Int=0, isRandom: Boolean=false, isLoopEnabled: Boolean=false,color:MutableState<Color>
 
 ) {
     val restartTrigger = remember { mutableStateOf(0) }
@@ -58,6 +61,11 @@ fun QuestionsPage(
     val currentQuestion by viewModel.currentQuestion.collectAsState()
     val isEndOfList by viewModel.endOfQuestionList.collectAsState()
     val Colors by viewModel.Colors.collectAsState()
+
+    LaunchedEffect(Colors) {
+        color.value=Colors.first
+
+    }
 
     LaunchedEffect(audience, restartTrigger) {
         questions.value = getQuestionsForAudience(audienceID)
@@ -87,7 +95,7 @@ fun QuestionsPage(
                 }
             }
         },
-        containerColor = Colors.first  // MaterialTheme.colorScheme.primaryContainer
+        containerColor = Color.Transparent  // MaterialTheme.colorScheme.primaryContainer
         ,
         floatingActionButtonPosition = FabPosition.Center, // Position the FAB at the center bottom
         content = { paddingValues ->
@@ -105,7 +113,12 @@ fun QuestionsPage(
                 Box(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(16.dp)
+                        .padding(16.dp).clickable(
+                            interactionSource = remember { MutableInteractionSource() },
+                            indication = null
+                        ) {
+                            viewModel.onNextClick(isRandom, isLoopEnabled)
+                        }
                 ) {
                     Column(
                         modifier = Modifier.fillMaxSize(),
@@ -131,12 +144,12 @@ fun QuestionsPage(
                         }
 
                         // Az alsó rész a QuestionControls komponenst tartalmazza, amely így a képernyő alján helyezkedik el
-                        QuestionControls(
+                      /*  QuestionControls(
                             onBackClick = { viewModel.onBackClick() },
                             onNextClick = { viewModel.onNextClick(isRandom, isLoopEnabled) },
                             currentQuestion = currentQuestion,
                             isEndOfList = isEndOfList
-                        )
+                        )*/
                     }
                 }
 

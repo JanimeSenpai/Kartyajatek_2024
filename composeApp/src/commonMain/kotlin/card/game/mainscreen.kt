@@ -16,6 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import card.game.bekerdezokerdesek.QuestionsPage
 
@@ -25,8 +26,9 @@ fun MainScreen(orientation: String) {
     // Instead of using dependency injection, we simply create the ViewModel here as a sample.
     val viewModel: FlashcardViewModel = remember { FlashcardViewModel() }
     val uiState by viewModel.uiState.collectAsState()
+    val hoistedcolor = remember { mutableStateOf(Color(0)) }
     val color = when (uiState.currentGame) {
-        GameMode.Game2 -> MaterialTheme.colorScheme.primaryContainer
+        GameMode.Game2 -> hoistedcolor.value
         GameMode.Info, GameMode.Game1 -> MaterialTheme.colorScheme.background
     }    // Use Scaffold to add a bottomBar.
     Scaffold(
@@ -43,6 +45,7 @@ fun MainScreen(orientation: String) {
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding),
+            color = color
         ) {
             Column(
                 modifier = Modifier
@@ -75,7 +78,7 @@ fun MainScreen(orientation: String) {
                         // Display an informational screen content, such as InfoScreen()
                     }
                     GameMode.Game2 -> {
-                        QuestionsPage()
+                        QuestionsPage(color =hoistedcolor)
                     }
                 }
             }

@@ -2,6 +2,13 @@ package card.game
 
 import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.ViewModel
+import kartyajatek_2024.composeapp.generated.resources.Res
+import kartyajatek_2024.composeapp.generated.resources.delete
+import kartyajatek_2024.composeapp.generated.resources.hands
+import kartyajatek_2024.composeapp.generated.resources.hourglass
+import kartyajatek_2024.composeapp.generated.resources.people
+import kartyajatek_2024.composeapp.generated.resources.pie_chart
+import kartyajatek_2024.composeapp.generated.resources.placeholder
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -25,6 +32,7 @@ class FlashcardViewModel : ViewModel() {
 
     val englishDimensions = listOf("Feeling", "Taboo", "Person", "Place", "Lifecircle", "Time")
     val hungarianDimensions = listOf("Érzés", "Tabu", "Személy", "Helyszín", "Életkör", "Idő")
+    val images =listOf(Res.drawable.hands,Res.drawable.delete,Res.drawable.people,Res.drawable.placeholder,Res.drawable.pie_chart,Res.drawable.hourglass)
 
     private fun initializeFlashcards() {
         val flashcards = defaultTexts.mapIndexed { index, defaultText ->
@@ -50,7 +58,8 @@ class FlashcardViewModel : ViewModel() {
                         }"
                     )
                 },
-                backgroundColor = colors.getOrElse(index) { Color.Gray }
+                backgroundColor = colors.getOrElse(index) { Color.Gray },
+                imageResource = images[index]
             )
         }
         _uiState.value = _uiState.value.copy(flashcards = flashcards)
