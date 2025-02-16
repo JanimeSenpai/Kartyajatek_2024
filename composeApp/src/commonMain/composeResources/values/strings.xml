@@ -1,3 +1,17 @@
 <resources>
 <string name="endoflist">We reached the end of the question list.</string>
+    <string name="info">
+        Iceberg is a game consisting of questions and topics designed to help you get to know yourself and others better. In this app, you can explore two different game modes.
+
+Everyone has the freedom to decide how deeply they want to share their feelings and stories with others. It is also completely okay not to answer a question, and this choice should always be respected.
+
+The game can be played alone by reflecting on a given question individually. However, its main goal is to facilitate meaningful conversations and deeper connections between at least two people.
+
+In the first game mode, there are six different dimensions. You should choose two dimensions at a time and draw a card from each. Based on the two revealed cards, you associate freely and share your thoughts in an open and spontaneous way.
+
+The second game mode consists of difficult, thought-provoking questions that can go deep. This is why it is called the “Interrogator” deck, and it is only recommended for those who want to open up about their emotions and inner struggles in a safe, trusted environment. These cards are intentionally provocative.
+
+If you find a question too difficult and you don’t feel ready to answer it, feel free to draw another card. You can always come back to the ones you set aside later.
+
+    </string>
 </resources>

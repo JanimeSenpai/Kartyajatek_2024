@@ -64,13 +64,13 @@ sealed class BottomNavItem(
         GameMode.Game1,
         Icons.Filled.Favorite,
         Icons.Outlined.FavoriteBorder,
-        "Game1"
+        "Dimenziók"
     )
 
     object Game2 : BottomNavItem(
         GameMode.Game2,
         Icons.Filled.Star,
         Icons.Outlined.Star,
-        "Questions"
+        "Bekérdező"
     )
 }

@@ -75,6 +75,7 @@ fun MainScreen(orientation: String) {
                         )
                     }
                     GameMode.Info -> {
+                        infoScreen()
                         // Display an informational screen content, such as InfoScreen()
                     }
                     GameMode.Game2 -> {
