@@ -3,9 +3,11 @@ package card.game
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -55,8 +57,8 @@ sealed class BottomNavItem(
 ) {
     object Info : BottomNavItem(
         GameMode.Info,
-        Icons.Filled.Home,
-        Icons.Outlined.Home,
+        Icons.Filled.Info,
+        Icons.Outlined.Info,
         "Info"
     )
 
